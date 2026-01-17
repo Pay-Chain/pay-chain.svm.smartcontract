@@ -1,0 +1,42 @@
+# Rust/Cargo
+target/
+**/*.rs.bk
+Cargo.lock
+
+# Anchor
+.anchor/
+test-ledger/
+
+# Node modules (for Anchor tests)
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keypairs (NEVER commit!)
+*.json
+!package.json
+!tsconfig.json
+!Anchor.toml
+
+# TypeScript build output
+dist/
+
+# Test coverage
+coverage/
+lcov.info
+
+# Logs
+*.log
