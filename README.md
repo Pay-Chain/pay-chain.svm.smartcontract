@@ -65,24 +65,24 @@ flowchart TD
     subgraph Solana [Solana Chain]
         S_User[User] -->|Calls| S_Program[PayChain Program]
         
-        S_Program -->|1. Swap (Optional)| S_Jup[Jupiter Aggregator]
-        S_Jup -->|Output Tokens| S_Program
+        S_Program -->|"1. Swap (Optional)"| S_Jup["Jupiter Aggregator"]
+        S_Jup -->|"Output Tokens"| S_Program
         
-        S_Program -->|2. Lock Funds| S_Vault[Vault PDA]
-        S_Program -->|3. Calc Fee| S_Config[Config State]
+        S_Program -->|"2. Lock Funds"| S_Vault["Vault PDA"]
+        S_Program -->|"3. Calc Fee"| S_Config["Config State"]
         
-        S_Program -->|4. Emit Event| S_Event[PaymentCreated Event]
+        S_Program -->|"4. Emit Event"| S_Event["PaymentCreated Event"]
         
-        S_Event -.->|Indexer| S_Relayer[Off-Chain Relayer / CCIP]
+        S_Event -.->|Indexer| S_Relayer["Off-Chain Relayer / CCIP"]
     end
 
     subgraph Bridge [CCIP Network]
-        S_Relayer -->|Cross-Chain Message| B_Network[Chainlink CCIP]
+        S_Relayer -->|"Cross-Chain Message"| B_Network["Chainlink CCIP"]
     end
 
     subgraph EVM [Destination EVM Chain]
-        B_Network -->|Receive| D_Gateway[EVM Gateway]
-        D_Gateway -->|Unlock/Mint| D_Receiver[Merchant Wallet]
+        B_Network -->|Receive| D_Gateway["EVM Gateway"]
+        D_Gateway -->|"Unlock/Mint"| D_Receiver["Merchant Wallet"]
     end
 ```
 
