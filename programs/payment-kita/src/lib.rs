@@ -13,7 +13,7 @@ declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
 pub mod pay_chain {
     use super::*;
 
-    /// Initialize the PayChain program
+    /// Initialize the PaymentKita program
     pub fn initialize(ctx: Context<Initialize>, router: Pubkey, chain_id: String) -> Result<()> {
         instructions::initialize(ctx, router, chain_id)
     }

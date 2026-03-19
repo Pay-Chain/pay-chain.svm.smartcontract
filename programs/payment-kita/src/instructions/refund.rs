@@ -37,7 +37,7 @@ pub fn process_refund(ctx: Context<ProcessRefund>) -> Result<()> {
     
     require!(
         payment.status == PaymentStatus::Failed,
-        PayChainError::PaymentNotFailed
+        PaymentKitaError::PaymentNotFailed
     );
 
     payment.status = PaymentStatus::Refunded;

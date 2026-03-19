@@ -1,15 +1,15 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { PayChain } from "../target/types/pay_chain";
+import { PaymentKita } from "../target/types/pay_chain";
 import { PublicKey, SystemProgram, Keypair } from "@solana/web3.js";
 import { TOKEN_PROGRAM_ID, createMint, getOrCreateAssociatedTokenAccount, mintTo } from "@solana/spl-token";
 import { expect } from "chai";
 
-describe("pay-chain", () => {
+describe("payment-kita", () => {
   // Configure the client to use the local cluster.
   anchor.setProvider(anchor.AnchorProvider.env());
 
-  const program = anchor.workspace.PayChain as Program<PayChain>;
+  const program = anchor.workspace.PaymentKita as Program<PaymentKita>;
   const provider = anchor.getProvider();
   
   // Test accounts

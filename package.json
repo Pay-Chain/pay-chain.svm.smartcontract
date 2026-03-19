@@ -1,7 +1,7 @@
 {
-    "name": "pay-chain-svc",
+    "name": "payment-kita-svc",
     "version": "1.0.0",
-    "description": "SVM Smart Contract for Pay-Chain",
+    "description": "SVM Smart Contract for Payment-Kita",
     "scripts": {
         "test": "anchor test"
     },

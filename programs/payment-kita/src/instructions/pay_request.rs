@@ -28,10 +28,10 @@ pub struct PayRequest<'info> {
 
 pub fn pay_request(ctx: Context<PayRequest>, request_id: [u8; 32]) -> Result<()> {
     let request = &mut ctx.accounts.payment_request;
-    require!(!request.is_paid, PayChainError::AlreadyPaid);
+    require!(!request.is_paid, PaymentKitaError::AlreadyPaid);
     require!(
         Clock::get()?.unix_timestamp <= request.expires_at,
-        PayChainError::RequestExpired
+        PaymentKitaError::RequestExpired
     );
 
     // Transfer tokens from payer to merchant vault

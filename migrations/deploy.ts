@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { PayChain } from "../target/types/pay_chain";
+import { PaymentKita } from "../target/types/pay_chain";
 import { PublicKey, SystemProgram, Keypair } from "@solana/web3.js";
 import * as dotenv from "dotenv";
 
@@ -10,7 +10,7 @@ module.exports = async function (provider) {
   // Configure client to use the provider.
   anchor.setProvider(provider);
 
-  const program = anchor.workspace.PayChain as Program<PayChain>;
+  const program = anchor.workspace.PaymentKita as Program<PaymentKita>;
   
   // PDAs
   const [configPda] = PublicKey.findProgramAddressSync(

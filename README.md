@@ -1,4 +1,4 @@
-# Pay-Chain SVM (Solana) Smart Contract PRD
+# Payment-Kita SVM (Solana) Smart Contract PRD
 
 > **Component**: SVM Smart Contracts (Solana)
 > **Status**: Implementation In Progress
@@ -6,7 +6,7 @@
 
 ## 1. Overview
 
-The **Pay-Chain SVM Smart Contracts** module acts as the high-performance execution layer for the cross-chain stablecoin payment gateway on Solana. It handles asset custody, cross-chain message routing via CCIP, atomic token swaps via Jupiter, and fee management using Anchor's secure account validation.
+The **Payment-Kita SVM Smart Contracts** module acts as the high-performance execution layer for the cross-chain stablecoin payment gateway on Solana. It handles asset custody, cross-chain message routing via CCIP, atomic token swaps via Jupiter, and fee management using Anchor's secure account validation.
 
 ### Key Objectives
 1.  **Trustless Execution**: Uses PDA (Program Derived Address) constraints to ensure funds can only be moved by valid cross-chain messages or authorized refunds.
@@ -27,7 +27,7 @@ sequenceDiagram
     participant Frontend
     participant Backend
     participant Wallet as Phantom/Solflare
-    participant Program as PayChainProgram
+    participant Program as PaymentKitaProgram
     participant Jupiter
 
     User->>Frontend: Select Payment Request
@@ -39,7 +39,7 @@ sequenceDiagram
     rect rgb(20, 20, 20)
         Note right of Frontend: Atomic Instruction Composition
         Frontend->>Frontend: Compose Swap IX (Jupiter)
-        Frontend->>Frontend: Compose CreatePayment IX (PayChain)
+        Frontend->>Frontend: Compose CreatePayment IX (PaymentKita)
     end
     
     Frontend->>Wallet: Prompt Transaction Signature (Atomic)
@@ -63,7 +63,7 @@ The lifecycle of a payment from Solana execution to EVM destination settlement.
 ```mermaid
 flowchart TD
     subgraph Solana [Solana Chain]
-        S_User[User] -->|Calls| S_Program[PayChain Program]
+        S_User[User] -->|Calls| S_Program[PaymentKita Program]
         
         S_Program -->|"1. Swap (Optional)"| S_Jup["Jupiter Aggregator"]
         S_Jup -->|"Output Tokens"| S_Program
@@ -123,7 +123,7 @@ The system uses a **PDA-based Authority** model. The `Config` account acts as th
 
 ### Directory Structure
 ```
-programs/pay-chain/src/
+programs/payment-kita/src/
 ├── lib.rs              # Entry point (Program ID & instruction routing)
 ├── state/              # Account definitions (storage)
 │   ├── config.rs       # Global configuration (Fees, Authorities, Chain ID)

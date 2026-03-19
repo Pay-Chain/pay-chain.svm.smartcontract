@@ -74,7 +74,7 @@ pub fn ccip_receive(ctx: Context<CcipReceive>, message: Any2SVMMessage) -> Resul
     // paymentId (32 bytes), amount (32 bytes), receiver (32 bytes)
     let data = &message.data;
     if data.len() < 96 {
-        return Err(PayChainError::InvalidMessageData.into());
+        return Err(PaymentKitaError::InvalidMessageData.into());
     }
 
     let mut payment_id = [0u8; 32];
